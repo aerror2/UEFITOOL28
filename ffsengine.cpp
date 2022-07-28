@@ -949,6 +949,11 @@ UINT8 FfsEngine::getVolumeSize(const QByteArray & bios, UINT32 volumeOffset, UIN
     volumeSize = volumeHeader->FvLength;
     bmVolumeSize = calcVolumeSize;
 
+    if(bmVolumeSize!=volumeSize )
+    {
+        volumeSize = calcVolumeSize;
+    }
+
     if (volumeSize == 0)
         return ERR_INVALID_VOLUME;
 

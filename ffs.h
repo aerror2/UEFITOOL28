@@ -132,6 +132,12 @@ const QByteArray EFI_SONY_FILE_SYSTEM_GUID
 ("\x56\x41\x49\x4F\xD6\xAE\x64\x4D\xA5\x37\xB8\xA5\x55\x7B\xCE\xEC", 16);
 // 4F494156-AED6-4D64-A537-B8A5557BCEEC // Sony 1
 
+
+const QByteArray EFI_HP_FILE_SYSTEM_GUID
+("\xDF\x56\x2B\x37\x9F\xCC\x17\x48\xAB\x97\x0A\x10\xA9\x2C\xEA", 16);
+// 372B56DF-CC9F-4817-AB97-0A10A92CEAA5 // Sony 1
+
+
 // Vector of volume GUIDs with FFSv2-compatible files
 extern const QVector<QByteArray> FFSv2Volumes;
 

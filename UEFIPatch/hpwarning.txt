@@ -1,0 +1,30 @@
+# Patch string format
+# FileGuid SectionType PatchType:FindPatternOrOffset:ReplacePattern 
+# Please ensure that the latest symbol in patch string is space
+
+# Possible section types:
+#  PE32 image                    10
+#  Position-independent code     11
+#  TE Image                      12
+#  DXE Dependency                13
+#  Version information           14
+#  User interface string         15
+#  16-bit code                   16
+#  Guided freeform               18
+#  Raw data                      19
+#  PEI Dependency                1B
+#  SMM Dependency                1C
+# Please do not try another section types, it can make the resulting image broken
+
+# Possible patch types:
+#  P - pattern-based, first parameter is a pattern to find, second - a pattern to replace
+#  O - offset-based, first parameter is hexadecimal offset, second - a pattern to replace
+# Patterns can have . as "any possible value" symbol
+
+#----------------------------------------------------------------------------------
+# OSX CPU Power Management patches
+# Remove lock from MSR 0xE2 register
+#----------------------------------------------------------------------------------
+
+# PowerMgmtDxe | Haswell
+6D33944A-EC75-4855-A54D-809C75241F6C 10 P:5700610072006E0069006E0067003A0020002000:0000610072006E0069006E0067003A0020002000 

@@ -12,6 +12,8 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 */
 
 #include "uefireplace.h"
+#include <iostream>
+
 
 UEFIReplace::UEFIReplace(QObject *parent) :
     QObject(parent)
@@ -86,12 +88,16 @@ UINT8 UEFIReplace::replaceInFile(const QModelIndex & index, const QByteArray & g
     if (!model || !index.isValid())
         return ERR_INVALID_PARAMETER;
     bool patched = false;
-    if (model->subtype(index) == sectionType) {
-        QModelIndex fileIndex = index;
+      QModelIndex fileIndex = index;
         if (model->type(index) != Types::File)
             fileIndex = model->findParentOfType(index, Types::File);
         QByteArray fileGuid = model->header(fileIndex).left(sizeof(EFI_GUID));
 
+
+    //std::cout  << guidToQString( *(const EFI_GUID*)fileGuid.data()).toStdString() << " sectionType : " << ((unsigned int)model->subtype(index))  << " my:" << ((unsigned int) sectionType) << std::endl;
+
+    if (model->subtype(index) == sectionType) {
+      
         bool guidMatch = fileGuid == guid;
         if (!guidMatch && sectionType == EFI_SECTION_FREEFORM_SUBTYPE_GUID) {
             QByteArray subGuid = model->header(index).mid(sizeof(UINT32), sizeof(EFI_GUID));

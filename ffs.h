@@ -566,7 +566,6 @@ extern UINT32 sizeOfSectionHeader(const EFI_COMMON_SECTION_HEADER* header);
 /// EFI_DEP_AFTER is only used by DXE driver.
 ///
 #define EFI_DEP_AFTER         0x01
-
 #define EFI_DEP_PUSH          0x02
 #define EFI_DEP_AND           0x03
 #define EFI_DEP_OR            0x04
